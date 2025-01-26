@@ -1,0 +1,7 @@
+/.env
+/migrations/README
+/migrations/script.py.mako
+/.venv/
+**/__pycache__/
+/.idea
+/data/
