@@ -1,8 +1,6 @@
 import asyncio
-
 import httpx
-
-from config import BOT_TOKEN
+from config import BOT_TOKEN, DB_HOST_, PORT_
 from aiogram.filters import Command
 from aiogram import Bot, Dispatcher, types
 from keyboard import kb
@@ -27,7 +25,7 @@ async def handle_callback(call: types.CallbackQuery):
 async def receive_artikul(msg: types.Message):
     artikul = msg.text
     async with httpx.AsyncClient() as client:
-        response = await client.post(f"http://localhost:8000/api/v1/products", json={"artikul": artikul})
+        response = await client.post(f"http://{DB_HOST_}:{PORT_}/api/v1/products", json={"artikul": artikul})
         if response.status_code == 200:
             data = response.json()
             await msg.reply(f"Данные по товару: {data}")

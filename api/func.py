@@ -16,6 +16,8 @@ def get_values(data, keys):
 
 
 def create_object(artikul, ready_data):
+    if 'name' not in ready_data:
+        raise ValueError(f"товара с articul: {artikul} не существует")
     product = Product(
         articul=artikul,
         name=ready_data['name'],

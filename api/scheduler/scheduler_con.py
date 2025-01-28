@@ -1,7 +1,9 @@
-from apscheduler.executors.pool import ThreadPoolExecutor, ProcessPoolExecutor
-from apscheduler.jobstores.redis import RedisJobStore
+# from apscheduler.executors.pool import ThreadPoolExecutor, ProcessPoolExecutor
+# from apscheduler.jobstores.redis import RedisJobStore
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.schedulers.background import BackgroundScheduler
+
+# from apscheduler.schedulers.background import BackgroundScheduler
 
 # redis_url = "redis://127.0.0.1:6379/"
 #
@@ -22,6 +24,6 @@ from apscheduler.schedulers.background import BackgroundScheduler
 
 #scheduler = BackgroundScheduler(jobstores=jobstores, executors=executors, job_defaults=job_defaults)
 scheduler = AsyncIOScheduler()
-scheduler.start()
+# scheduler.start()
 
 

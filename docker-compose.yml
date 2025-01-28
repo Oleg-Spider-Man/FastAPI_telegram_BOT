@@ -1,8 +1,8 @@
 version: "3.7"
 services:
-  db:
+  db_:
     image: postgres:11
-    container_name: db_app
+    container_name: db_
     volumes:
       - ./data:/app/data
     env_file:
@@ -13,12 +13,22 @@ services:
       context: .
     env_file:
       - .env-docker
-    container_name: fastapi_app
+    container_name: fastapi_app_bot
     command: ["/app/docker/app.sh"]
     ports:
       - 9991:8000
     depends_on:
-      - db
+      - db_
 
 
+  bot:
+    build:
+      context: .
+    env_file:
+      - .env-docker
+    container_name: bot_app
+    command: python bot/bot_main.py
+    depends_on:
+      - app
+      - db_
 
