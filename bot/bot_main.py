@@ -25,7 +25,7 @@ async def handle_callback(call: types.CallbackQuery):
 async def receive_artikul(msg: types.Message):
     artikul = msg.text
     async with httpx.AsyncClient() as client:
-        response = await client.post(f"http://{DB_HOST_}:{PORT_}/api/v1/products", json={"artikul": artikul})
+        response = await client.post(f"http://{DB_HOST_}:{PORT_}/api_bot/api/v1/products", json={"artikul": artikul})
         if response.status_code == 200:
             data = response.json()
             await msg.reply(f"Данные по товару: {data}")

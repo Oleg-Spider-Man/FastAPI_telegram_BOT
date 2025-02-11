@@ -15,4 +15,4 @@ async def my_task(artikul, db):
             return await crud.update_pr(db, product)
         db.add(product)
         await db.commit()
-        return await product
+        return product
